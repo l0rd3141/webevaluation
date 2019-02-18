@@ -37,12 +37,3 @@ class Objective(models.Model):
     def __str__(self):
         return self.text
 
-
-class Rubric(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(Evaluator, related_name='administrator', on_delete=models.CASCADE)
-    number_of_rows = models.PositiveIntegerField()
-    number_of_cols = models.PositiveIntegerField()
-
-    def __str__(self):
-        return self.created_by

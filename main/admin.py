@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Evaluator, Measure, Objective, Rubric
+from .models import Evaluator, Measure, Objective
 from django.contrib.auth.models import Group
 
 
@@ -12,7 +12,7 @@ class EvaluatorAdmin(admin.ModelAdmin):
 admin.site.register(Evaluator, EvaluatorAdmin)
 admin.site.register(Measure)
 admin.site.register(Objective)
-admin.site.register(Rubric)
+
 
 # Unregister groups that are not needed
 admin.site.unregister(Group)
