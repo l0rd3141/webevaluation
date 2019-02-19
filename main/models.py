@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.mail import send_mail
 # Create your models here.
-
+import os
 
 class Evaluator(models.Model):
     name = models.CharField(max_length=200)
@@ -39,11 +39,12 @@ class Objective(models.Model):
 
 
 class StudentList(models.Model):
-    StudentList = models.FileField()
+    base=os.path.dirname(os.path.abspath(__file__))
+    StudentList = models.FileField(upload_to=base)
 
     def save(self, *args, **kwargs):
         super(StudentList, self).save(*args, **kwargs)
-        filename = self.StudentList.url
+        filename = self.StudentList.name
         file = open(filename, 'r')
         names = file.readlines()
         for name in names:
