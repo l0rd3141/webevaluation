@@ -37,3 +37,23 @@ class Objective(models.Model):
     def __str__(self):
         return self.text
 
+
+class StudentList(models.Model):
+    StudentList = models.FileField()
+
+    def save(self, *args, **kwargs):
+        super(StudentList, self).save(*args, **kwargs)
+        filename = self.StudentList.url
+        file = open(filename, 'r')
+        names = file.readlines()
+        for name in names:
+            s = Student.objects.create(name=name, evaluation_status=False, evaluation_score=0.0)
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=200)
+    evaluation_status = models.BooleanField()
+    evaluation_score = models.FloatField()
+
+    def __str__(self):
+        return self.name
