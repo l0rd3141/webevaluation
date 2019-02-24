@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.mail import send_mail
+
+
 # Create your models here.
 import os
 
@@ -58,3 +60,4 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+
